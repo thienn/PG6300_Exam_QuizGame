@@ -1,5 +1,3 @@
-// entry -> output
-
 const path = require('path');
 
 // https://webpack.js.org/concepts/#output
@@ -8,7 +6,7 @@ const path = require('path');
 // run it and access to whatever is defined here
 // https://webpack.js.org/
 module.exports = {
-    entry: './src/app.jsx',
+    entry: './src/index.jsx',
     output: {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
@@ -20,7 +18,18 @@ module.exports = {
             loader: 'babel-loader',
             test: /\.jsx$/,
             exclude: /node_modules/
+        }, 
+        {
+            test: /\.s?css$/,
+            use: [
+                'style-loader',
+                'css-loader',
+                'sass-loader'
+            ] 
         }]
+    },
+    resolve: {
+        extensions: ['.js', '.jsx']
     },
     // https://webpack.js.org/configuration/devtool/ on how to use devtool
     /*
@@ -33,6 +42,6 @@ module.exports = {
     }
 };
 
-// __dirname will give the absolute path to your project, then it can specify the public folder etc
+// __dirname will give the absolute path to your project, then it can specify the folder. Ex: public folder
 
 
