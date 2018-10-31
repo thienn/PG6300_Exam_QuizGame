@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import DashboardPage from '../components/Dashboard';
 import GamePage from '../components/Game';
 import HighscorePage from '../components/Highscore';
+import PageNotFoundPage from '../components/PageNotFound';
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -15,6 +16,7 @@ const AppRouter = () => (
                 <Route path="/" exact component={DashboardPage}/>
                 <Route path="/game" component={GamePage} />
                 <Route path="/highscore" component={HighscorePage} />
+                <Route component={PageNotFoundPage} />
             </Switch>
         </div>
     </BrowserRouter>
