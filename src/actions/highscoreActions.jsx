@@ -7,3 +7,13 @@ export const fetchHighscore = () => dispatch => {
         payload: scores
     }));    
 };
+
+export const addScore = ({ name = '', score = 0} = {}) => ( {
+    type: 'ADD_SCORE',
+    score: {
+        name,
+        score
+    }
+});
+
+
