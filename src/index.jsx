@@ -13,8 +13,12 @@ const store = configureStore();
 // Dummy data to test out the reducers
 store.dispatch(addScore( { name: 'Thien', score: 10 }))
 store.dispatch(addScore( { name: 'ThienOther', score: 20 }))
+store.dispatch(addScore( { name: 'Abraham', score: 20 }))
+store.dispatch(addScore( { name: 'Abraham', score: 20 }))
+store.dispatch(addScore( { name: 'Peter', score: 20 }))
 
 console.log(store.getState());
+
 
 const jsx = (
     <Provider store={store}>
