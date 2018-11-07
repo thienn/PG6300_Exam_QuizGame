@@ -6,7 +6,7 @@ const path = require('path');
 // run it and access to whatever is defined here
 // https://webpack.js.org/
 module.exports = {
-    entry: './src/index.jsx',
+    entry: './src/client/index.jsx',
     output: {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
