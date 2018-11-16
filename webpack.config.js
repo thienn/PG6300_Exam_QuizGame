@@ -1,4 +1,5 @@
 const path = require('path');
+require("@babel/polyfill");
 
 // https://webpack.js.org/concepts/#output
 
@@ -6,7 +7,7 @@ const path = require('path');
 // run it and access to whatever is defined here
 // https://webpack.js.org/
 module.exports = {
-    entry: './src/client/index.jsx',
+    entry: ['@babel/polyfill', './src/client/index.jsx'],
     output: {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
