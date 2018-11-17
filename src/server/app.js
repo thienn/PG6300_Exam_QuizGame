@@ -1,10 +1,39 @@
 const express = require('express');
 //const path = require('path');
+const http = require('http');
+const socketIO = require('socket.io');
 
 const app = express();
 
+// server instance of the app
+const server = http.createServer(app);
+
+// createes socket of the server using the instance 
+const io = socketIO(server);
+
 // for parsing the json object - middleware
 app.use(express.json());
+
+// socket connection - check if there is anny connected clients
+io.on('connection', socket => {
+    console.log('User connected');
+
+    
+    // Method that will check for the challback function (listen to the clients)
+    socket.on('change color', (color) => {
+        // Once the data is taken in on the server side, it can the be emitted (sent) to all the connected clients
+        console.log('Color changed to: ', color) // just for testing
+        // the real emit
+        io.sockets.emit('change color', color)
+
+    });
+    
+
+    // For when the user disconnect
+    socket.on('disconnect', () => {
+        console.log('User disconnected');
+    });
+});
 
 // In-memory array for simulating DB
 const questions = [

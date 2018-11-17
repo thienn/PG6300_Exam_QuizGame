@@ -1,9 +1,19 @@
+/*
+    Setup from - https://github.com/arcuri82/pg6300/blob/master/les11/connect4-v2/src/server/server.js
+*/
+
 const app = require("./app");
+const WsHandler = require('./websocket_handler/websocket_handler');
 
-//const server = require('http').Server(app);
+// connect the server to the app
+const server = require('http').Server(app);
 
 
-app.listen(process.env.PORT || 8080, () => {
+// Start the server
+WsHandler.start(server);
+
+
+server.listen(process.env.PORT || 8080, () => {
     console.log('Starting Express server');
 });
 

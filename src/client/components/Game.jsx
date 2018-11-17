@@ -13,6 +13,7 @@ export default GamePage;
 
 
 import React from 'react';
+import scoketIOClient from 'socket.io-client';
 
 export class Game extends React.Component {
     // constructor
@@ -21,10 +22,30 @@ export class Game extends React.Component {
 
         this.state = {
             questions: null,
-            error: null
+            error: null,
+            endpoint: "http://localhost:8080", // Where it will be emitted from - make it more dynamic
+            color: 'white'
         };
 
     };
+
+    // method for emitting a socket.io event (send is just a name)
+    // send = () => {}
+    send() {
+        const socket = scoketIOClient(this.state.endpoint);
+
+        // emit an event to the socket (server) with an arguemnt of something
+        // will test with sending the color red
+        socket.emit('change color', this.state.color);
+        // can have multiple arguments socket.emit('change color, 'red, 'yellow')
+
+
+    }
+
+    setColor(color) {
+        this.setState({color});
+    }
+
     // component mount
     componentDidMount() {
         this.fetchQuestions();
@@ -67,6 +88,18 @@ export class Game extends React.Component {
 
     // render
     render() {
+
+        // since render runs often can use it to test to see if there is any updates to the sockets
+        const socket = scoketIOClient(this.state.endpoint);
+
+        //socket.on is a method that checks for incoming events form the server 
+        // this method looks for chane color in this case
+        // then take the callback function as first argument
+        socket.on('change color', (color) => {
+            document.body.style.backgroundColor = color // set the background color to the one the argument was given
+        });
+
+
         let table;
         if (this.state.error !== null ) {
             table =<p>{this.state.error}</p>
@@ -98,6 +131,9 @@ export class Game extends React.Component {
             <div>
                 <h2>Questions list</h2>
                 {table}
+                <button onClick={() => this.send()}>Change Color</button>
+                <button id="blue" onClick={() => this.setColor('blue')}>Blue</button>
+                <button id="red" onClick={() => this.setColor('red')}>Red</button>
             </div>
         );
 
