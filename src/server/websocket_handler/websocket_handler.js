@@ -6,6 +6,8 @@
 const socketIo = require('socket.io');
 const Tokens = require('./tokens');
 
+const ActivePlayers = require('../online/active_players');
+
 let io;
 
 const start = (server) => {
@@ -16,6 +18,8 @@ const start = (server) => {
     // This will connect that to the socket and take care of the connection server-client(s) (websocket style)
     io.on('connection', function(socket) {
        
+        console.log('A user connected test - above login')
+        
         socket.on('login', (data) => {
             if(data === null || data === undefined) {
                 socket.emit("update", {error: "No payload provided"});
@@ -46,8 +50,9 @@ const start = (server) => {
         // Disconnect 
         socket.on('disconnect', () => {
             // Implement active players & stop ongoing matches when it's implemented
+            const userId = ActivePlayers.getUser(socket.id);
 
-            console.log(`User disconnected`);
+            console.log(`User ${userId} disconnected`);
         });
 
     });
