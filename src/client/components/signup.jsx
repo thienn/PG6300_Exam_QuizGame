@@ -29,10 +29,13 @@ class SignUp extends React.Component {
 
     async doSignUp() {
         const { userId } = this.state;
+        console.log("check userId" + this.state.userId);
 
         const url = "/api/signup";
 
         const payload = {userId: userId};
+
+        console.log("Payload: " + JSON.stringify(payload));
 
         let response;
 
@@ -44,8 +47,10 @@ class SignUp extends React.Component {
                 },
                 body: JSON.stringify(payload) // turn object into JSON string to transfer
             });
+            console.log("Successful?" + response.status);
         } catch (err) {
             this.setState({ errorMessage: "Failed to connect ot server: " + err});
+            console.log("this!" + response);
             return;
         }
 
@@ -54,12 +59,13 @@ class SignUp extends React.Component {
             return;
         }
 
-        if(response.stats !== 204 ) {
+        if(response.status !== 204 ) {
             this.setState({ errorMessage: "Error when connecting to server: status code " + response.status});
             return;
         }
 
         // If none of the conditions happens go as normal
+        console.log("ALl well")
         this.setState({ errorMessage: null });
         this.props.updateLoggedInUserId(userId);
         this.props.history.push('/'); //go back to main

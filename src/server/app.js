@@ -29,6 +29,9 @@ app.use(session({
     saveUninitialized: false
 }));
 
+//needed to server static files, like HTML, CSS and JS.
+app.use(express.static('public'));
+
 /*
 // socket connection - check if there is anny connected clients
 io.on('connection', socket => {
@@ -104,8 +107,6 @@ const questions = [
     }
 ]
 
-//needed to server static files, like HTML, CSS and JS.
-app.use(express.static('public'));
 
 // In-memory array to act as "database"
 app.get('/api/questions', (req, res) => {

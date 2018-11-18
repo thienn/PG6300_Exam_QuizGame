@@ -15,6 +15,7 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 
 router.post('/signup', function(req, res){
 
+    console.log("before creating" + req.body.userId);
     const created = Users.createUser(req.body.userId);
 
     if(! created){
@@ -23,11 +24,13 @@ router.post('/signup', function(req, res){
     }
 
     passport.authenticate('local')(req, res, () => {
+        console.log(req.body);
         req.session.save((err) => {
             if (err) {
                 return next(err);
             }
             console.log('right place - authApi')
+            console.log(Users.getUser(req.body.userId));
             res.status(204).send();
         });
     });
