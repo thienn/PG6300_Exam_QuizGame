@@ -23,11 +23,30 @@ export class Game extends React.Component {
         this.state = {
             questions: null,
             error: null,
-            endpoint: "http://localhost:8080", // Where it will be emitted from - make it more dynamic
-            color: 'white'
+            name: "Anonymous",
+            user: null
         };
 
+        this.socket = socketIOClient(window.location.origin); // bind it to the window (like localhost:8080) etc
+
+        console.log(this.socket);
+        console.log(this.socket.id);
+        console.log(window.location.origin); // should be http://localhost:8080 
+
     };
+
+    /* Base init socket, so it can be manually called
+    initSocket = () => {
+        const socket = socketIOClient(window.location.origin)
+        socket.on('connect, () => {
+            console.log('connected socket from client')
+        })
+        this.setState({socket})
+        // add socket: null to the state constructor
+    }
+    *7
+
+    /*
 
     // method for emitting a socket.io event (send is just a name)
     // send = () => {}
@@ -42,15 +61,14 @@ export class Game extends React.Component {
 
 
     }
+    */
 
-    setColor(color) {
-        this.setState({color});
-    }
 
     // component mount
     componentDidMount() {
         this.fetchQuestions();
         // At beginning of this component, run the fetch method
+        // this.initSocket() // run the method at start
     }
 
     // Fetch method for questions test
@@ -135,9 +153,6 @@ export class Game extends React.Component {
             <div>
                 <h2>Questions list</h2>
                 {table}
-                <button onClick={() => this.send()}>Change Color</button>
-                <button id="blue" onClick={() => this.setColor('blue')}>Blue</button>
-                <button id="red" onClick={() => this.setColor('red')}>Red</button>
             </div>
         );
 

@@ -18,8 +18,12 @@ const start = (server) => {
     // This will connect that to the socket and take care of the connection server-client(s) (websocket style)
     io.on('connection', function(socket) {
        
-        console.log('A user connected test - above login')
+       // console.log('A user connected test - above login');
+        console.log(`Client socket ID: ${socket.id} - Connected`);
         
+        // Just like the name, data is the "payload" that is sent in from one of the clients
+        // Emit sends to everyone, but if you only want to broadcast to everyone except the one you got from
+        // broadcast.emit 
         socket.on('login', (data) => {
             if(data === null || data === undefined) {
                 socket.emit("update", {error: "No payload provided"});
@@ -52,8 +56,10 @@ const start = (server) => {
             // Implement active players & stop ongoing matches when it's implemented
             const userId = ActivePlayers.getUser(socket.id);
 
-            console.log(`User ${userId} disconnected`);
+            console.log(`Client socket ID: ${socket.id} - Disconnected`);
         });
+
+        // other socket commands that is necessary.
 
     });
 

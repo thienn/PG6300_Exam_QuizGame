@@ -3,6 +3,14 @@ const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
 
+//Auth
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const authApi = require('./routes/authApi');
+const Users = require('./db/users');
+const session = require('express-session');
+
 const app = express();
 
 // server instance of the app
@@ -12,11 +20,20 @@ const server = http.createServer(app);
 const io = socketIO(server);
 
 // for parsing the json object - middleware
-app.use(express.json());
+//app.use(express.json());
+app.use(bodyParser.json());
 
+app.use(session({
+    secret: 'used to encrypt the session cookies',
+    resave: false,
+    saveUninitialized: false
+}));
+
+/*
 // socket connection - check if there is anny connected clients
 io.on('connection', socket => {
-    console.log('User connected');
+    //console.log('User connected');
+    //console.log(`User connected - ID: ${this.socket}`);
 
     
     // Method that will check for the challback function (listen to the clients)
@@ -33,7 +50,43 @@ io.on('connection', socket => {
     socket.on('disconnect', () => {
         console.log('User disconnected');
     });
+}); */
+
+passport.use(new LocalStrategy( 
+    {
+        usernameField: 'userId',
+        passwordField: 'userId'
+    },
+    function (userId, done) {
+        const ok = Users.verifyUser(userId);
+
+        if (!ok) {
+            return done(null, false, {message: 'Invalid username'});
+        }
+
+        const user = Users.getUser(userId);
+        return done(null, user);
+    }
+));
+
+passport.serializeUser(function (user, done) {
+    done(null, user.id);
 });
+
+passport.deserializeUser(function (id, done) {
+    const user = Users.getUser(id);
+
+    if (user !== null) {
+        done(null, user);
+    } else {
+        done(null, false)
+    }
+});
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/api', authApi);
 
 // In-memory array for simulating DB
 const questions = [
