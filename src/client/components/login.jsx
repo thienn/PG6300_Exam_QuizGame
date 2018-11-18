@@ -14,6 +14,7 @@ class Login extends React.Component{
             errorMsg: null
         };
 
+        //this.updateLoggedInUserId = this.updateLoggedInUserId.bind(this);
         this.onUserIdChange = this.onUserIdChange.bind(this);
         this.doLogIn = this.doLogIn.bind(this);
     }
@@ -24,10 +25,12 @@ class Login extends React.Component{
 
     async doLogIn(){
         const {userId } = this.state;
+         console.log(userId + " at start of doLogin");
 
         const url = "/api/login";
 
         const payload = {userId: userId };
+        console.log("payload" + JSON.stringify(payload));
 
         let response;
 
@@ -55,7 +58,9 @@ class Login extends React.Component{
             return;
         }
 
+        console.log("Got through the errors");
         this.setState({errorMsg: null});
+        console.log(userId + "Phase: 1");
         this.props.updateLoggedInUserId(userId);
         this.props.history.push('/');
     }
@@ -79,7 +84,8 @@ class Login extends React.Component{
 
                 {error}
 
-                <div className="btn" onClick={this.doLogIn}>Log In</div>
+                <button className="btn" onClick={this.doLogIn}>Log In</button>
+                <hr />
                 <Link to={"/signup"}>Register</Link>
             </div>);
     }

@@ -17,6 +17,8 @@ function verifyUser(id) {
     if (user === undefined ) {
         return false;
     }; 
+
+    return user.id === id;
 };
 
 function createUser(id) {

@@ -60,7 +60,8 @@ passport.use(new LocalStrategy(
         usernameField: 'userId',
         passwordField: 'userId'
     },
-    function (userId, done) {
+    // req as it doesn't have a password
+    function (userId, req, done) {
         const ok = Users.verifyUser(userId);
 
         if (!ok) {
