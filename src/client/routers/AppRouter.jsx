@@ -12,6 +12,8 @@ import PageNotFoundPage from '../components/PageNotFound';
 import SignUp from '../components/signup';
 import Login from '../components/login';
 
+import QuizBoard from '../components/QuizBoard';
+
 // <Route path="/signup" exact component={signup} />
 // <Route path="/" exact component={Home}/>
 /*
@@ -97,6 +99,7 @@ export default class AppRouter extends React.Component {
                     <Route path="/highscore" component={HighscorePage} />
                     <Route path="/signup" render={props => <SignUp {...props} userId={this.state.userId} updateLoggedInUserId={this.updateLoggedInUserId} /> } />
                     <Route path="/login" render={props => <Login {...props} userId={this.state.userId} updateLoggedInUserId={this.updateLoggedInUserId}/>}/>
+                    <Route path="/quizboard" component={QuizBoard}/>
                     <Route component={PageNotFoundPage} />
                 </Switch>
             </div>
