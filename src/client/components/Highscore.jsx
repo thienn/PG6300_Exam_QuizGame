@@ -8,8 +8,9 @@ import selectFilters from '../selectors/filterSelector';
 
 const HighscorePage = (props) => (
     <div>
-        <HighscoreFilters />
         <h1>Highscore: (Provided by Highscore.jsx)</h1>
+        Search by user ID
+        <HighscoreFilters />
         {console.log(props.highscore)}
         {props.highscore.map((score) => {
             return <HighscoreItem key={score.id} {...score}/>

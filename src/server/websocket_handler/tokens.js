@@ -3,7 +3,7 @@
 Base setup for web sockets and sessions is from the lecture 8 + 11. 
 In relation to web sockets and tokens for session handling. 
 Modified it for my use whenever necessary, but the original credits go to https://github.com/arcuri82/pg6300.
-This one mostly untouched other than some changes to names + comments in my own words to understand the process better
+This one mostly untouched other than some changes to variable names + comments in my own words to understand the process better
 */
 const crypto = require("crypto");
 

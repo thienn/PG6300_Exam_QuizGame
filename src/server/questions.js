@@ -1,7 +1,7 @@
 const questions = [
     {
         id: 1,
-        text: 'What is React',
+        text: 'What is ReactJS',
         choices: [
             {
                 id: 'a',
@@ -17,7 +17,7 @@ const questions = [
             },
             {
                 id: 'd',
-                text: 'A programming lanugage'
+                text: 'No idea'
             }
         ],
         correct: 'a'
@@ -40,7 +40,7 @@ const questions = [
             },
             {
                 id: 'd',
-                text: 'A programming lanugage'
+                text: 'Transfer method'
             }
         ],
         correct: 'b'
@@ -70,27 +70,51 @@ const questions = [
     },
     {
         id: 4,
-        text: 'What is typescript  2',
+        text: 'What is the name of this course',
         choices: [
             {
                 id: 'a',
-                text: 'A superset of JavaScript'
+                text: 'React 101'
             },
             {
                 id: 'b',
-                text: 'Javascript back-end'
+                text: 'Introduction to API design'
             },
             {
                 id: 'c',
-                text: 'Trick'
+                text: 'Programming with React'
             },
             {
                 id: 'd',
-                text: 'A programming lanugage'
+                text: 'Web Development and API design'
             }
         ],
-        correct: 'a'
+        correct: 'd'
     },
+    {
+        id: 5,
+        text: 'What is NodeJS based on',
+        choices: [
+            {
+                id: 'a',
+                text: 'Java'
+            },
+            {
+                id: 'b',
+                text: 'C++'
+            },
+            {
+                id: 'c',
+                text: 'Javascript'
+            },
+            {
+                id: 'd',
+                text: 'Kotlin'
+            }
+        ],
+        correct: 'c'
+    },
+
 ]
 
 exports.questions = questions;

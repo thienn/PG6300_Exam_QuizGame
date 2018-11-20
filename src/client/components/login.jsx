@@ -84,7 +84,7 @@ class Login extends React.Component{
 
                 {error}
 
-                <button className="btn" onClick={this.doLogIn}>Log In</button>
+                <button className="buttonUI" onClick={this.doLogIn}>Log In</button>
                 <hr />
                 <Link to={"/signup"}>Register</Link>
             </div>);

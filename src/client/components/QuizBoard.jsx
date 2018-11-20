@@ -80,11 +80,7 @@ class QuizBoard extends React.Component {
     render() {
         let statusQuestions;
         let results;
-        /*
-        user = this.state.player;
-        console.log(user);
-        */
-
+        
         if (this.state.current > this.state.questions.length) {
             statusQuestions = '';
             // Own file since it will send the request to the reducer too.

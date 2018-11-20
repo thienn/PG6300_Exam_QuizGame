@@ -3,9 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Header from '../components/Header';
 
-import { DashboardPage } from '../components/Dashboard';
 import { Home } from '../components/Home';
-import { Game } from '../components/Game';
+import { ListOfQuestions } from '../components/ListOfQuestions';
 import HighscorePage from '../components/Highscore';
 import PageNotFoundPage from '../components/PageNotFound';
 
@@ -95,7 +94,7 @@ export default class AppRouter extends React.Component {
                 updateLoggedInUserId={this.updateLoggedInUserId}/>
                 <Switch>
                     <Route path="/" exact render={props => <Home {...props} userId={this.state.userId} updateLoggedInUserId={this.updateLoggedInUserId}/>}/>
-                    <Route path="/game" component={Game} />
+                    <Route path="/admin" component={ListOfQuestions} />
                     <Route path="/highscore" component={HighscorePage} />
                     <Route path="/signup" render={props => <SignUp {...props} userId={this.state.userId} updateLoggedInUserId={this.updateLoggedInUserId} /> } />
                     <Route path="/login" render={props => <Login {...props} userId={this.state.userId} updateLoggedInUserId={this.updateLoggedInUserId}/>}/>

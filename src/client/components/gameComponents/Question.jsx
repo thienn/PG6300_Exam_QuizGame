@@ -26,7 +26,7 @@ class Question extends React.Component {
                         question.choices.map(choice => {
                             return (
                                 <li className="list-group-item" key={choice.id}> 
-                                        <button 
+                                        <button className="buttonChoice"
                                             onClick={this.handleClick.bind(this)} 
                                             name={question.id}
                                             value={choice.id}

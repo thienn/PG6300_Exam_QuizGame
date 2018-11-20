@@ -40,7 +40,9 @@ export class Home extends React.Component {
                 <div>
                 {loggedIn ? (
                     <Link to={'/quizboard'}>
-                        Play the game
+                        <button className="buttonPlayGame">
+                            Play the game
+                        </button>
                     </Link>
                 ) : (
                     <div>
@@ -50,7 +52,7 @@ export class Home extends React.Component {
                 </div>
 
                 <p>
-                <button onClick={this.userLogout}>Logout</button>
+                <button className="buttonUI" onClick={this.userLogout}>Logout</button>
                 </p>
             </div>
         );
@@ -73,12 +75,12 @@ export class Home extends React.Component {
         <div className="Message">
             <div className="notLoggedInMessage">Log in or create user to continue</div>
             <Link to={"/login"}>
-                <button type="button">
+                <button type="button" className="buttonUI">
                     Login page
                 </button>
             </Link>
             <Link to={"/signup"}>
-                <button type="button">
+                <button type="button" className="buttonUI">
                     Register
                 </button>
             </Link>
@@ -103,7 +105,9 @@ export class Home extends React.Component {
         // set up ternary operator or if else, If logged in show welcome to the user, if not logged in then ask them to go to sign up
         return (
             <div>
-                {content}
+                <p>
+                 {content}
+                </p>
             </div>
         )
     }

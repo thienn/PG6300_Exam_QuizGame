@@ -11,11 +11,14 @@ export default GamePage;
 
 */
 
+/*
+    For admin purposes or so in the future. Question ID, Text, options and the correct answer
+*/
 
 import React from 'react';
 import socketIOClient from 'socket.io-client';
 
-export class Game extends React.Component {
+export class ListOfQuestions extends React.Component {
     // constructor
     constructor(props) {
         super(props)
