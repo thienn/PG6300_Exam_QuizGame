@@ -1,3 +1,8 @@
+/*
+    A lot of this is based on lectures and code from - https://github.com/arcuri82/pg6300
+    For structure. Done modifications for it to work with my passport + get questions from another file
+*/
+
 const express = require('express');
 //const path = require('path');
 const http = require('http');
@@ -92,22 +97,8 @@ app.use(passport.session());
 
 app.use('/api', authApi);
 
-// In-memory array for simulating DB
-const questions = [
-    { id: 1, name: 'questionset1',
-        'answers_options': ['First', 'Second', 'Third', 'Fourth'],
-        'correct_answer': 'Third'
-    },
-    { id: 2, name: 'questionset2',
-    'answers_options': ['First', 'Second', 'Third', 'Fourth'],
-    'correct_answer': 'Third'
-    },
-    { id: 3, name: 'questionset3',
-    'answers_options': ['First', 'Second', 'Third', 'Fourth'],
-    'correct_answer': 'Third'
-    }
-]
-
+// In-memory array for simulating DB - gets the object array from another file for cleaner code
+const questions = require('./questions').questions;
 
 // In-memory array to act as "database"
 app.get('/api/questions', (req, res) => {

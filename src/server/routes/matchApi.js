@@ -1,3 +1,8 @@
+/*
+    Setup of structure taken from - https://github.com/arcuri82/pg6300/
+*/
+
+
 const express = require('express');
 
 const PlayerQueue = require('../online/player_queue');

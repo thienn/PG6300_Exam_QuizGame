@@ -126,7 +126,7 @@ export class Game extends React.Component {
         if (this.state.error !== null ) {
             table =<p>{this.state.error}</p>
         } else if (this.state.questions === null || this.state.questions.length === 0) {
-            table = <p>There is no books in the registered database</p>
+            table = <p>There is no questions in the registered database</p>
         } else {
             table = <div>
             <table className="allQuestions">
@@ -134,14 +134,19 @@ export class Game extends React.Component {
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
+                        <th>Options</th>
+                        <th>The correct answer</th>
                     </tr>
                 </thead>
                 <tbody>
                     {this.state.questions.map(question => 
                         <tr key={question.id} className="oneQuestion">
                             <td>{question.id}</td>
-                            <td>{question.name}</td> 
-                            <td>{question.answers_options} </td>
+                            <td>{question.text}</td> 
+                            <td>{question.choices.map(choice => 
+                                    <p key={choice.id}> {choice.text}</p> 
+                                )} </td>
+                            <td>{question.correct}</td>
                         </tr>
                     )}
                 </tbody>
