@@ -17,9 +17,11 @@ class QuizBoard extends React.Component {
 
         this.socket = socketIOClient(window.location.origin); // Bind it to the client's ip, but in this case it will always be localhost:8080
 
+        /* for development purposes
         console.log(this.socket);
         console.log(this.socket.id);
         console.log(window.location.origin); // should be http://localhost:8080 
+        */
     }
 
     componentDidMount() {

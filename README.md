@@ -7,6 +7,8 @@
 
 Access at: http://localhost:8080/
 
+**NPM and NodeJS required**
+
 ### Technologies used:
 React with redux to handle some of the elements on frontend. Like high score and reading / adding data to that list.
 

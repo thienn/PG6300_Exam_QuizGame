@@ -72,7 +72,7 @@ export class Home extends React.Component {
             <h2 className="notLoggedInMessage">Log in or create user to continue</h2>
             <Link to={"/login"}>
                 <button type="button" className="buttonUI">
-                    Login page
+                    Login
                 </button>
             </Link>
             <Link to={"/signup"}>
@@ -88,7 +88,7 @@ export class Home extends React.Component {
         const userId = this.props.userId;
         const loggedIn = userId !== null && userId !== undefined;
 
-        console.log(userId + "-" + loggedIn)
+        //console.log(userId + "-" + loggedIn)
 
         let content;
         if (userId === null || userId === undefined) {
@@ -96,8 +96,7 @@ export class Home extends React.Component {
         } else {
             content = this.contentLoggedIn(userId, loggedIn);
         }
-
-        // set up ternary operator or if else, If logged in show welcome to the user, if not logged in then ask them to go to sign up
+        
         return (
             <div>
                 {content}

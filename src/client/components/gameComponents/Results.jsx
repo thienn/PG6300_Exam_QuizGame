@@ -14,7 +14,6 @@ class Results extends React.Component {
 
     
     componentWillUnmount() {
-        console.log(this.props.questions.length)
         // Checks if the length of questions is longer than 0, as Results component get mounted at start, during QuizBoard
         // before player get to interact it start as 0. Then will call on the method before it dismount (go away from the component in any way) 
         if(this.props.questions.length > 0 ) {

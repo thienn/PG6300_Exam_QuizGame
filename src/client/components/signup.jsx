@@ -30,13 +30,13 @@ class SignUp extends React.Component {
 
     async doSignUp() {
         const { userId } = this.state;
-        console.log("check userId" + this.state.userId);
+        //console.log("check userId" + this.state.userId);
 
         const url = "/api/signup";
 
         const payload = {userId: userId};
 
-        console.log("Payload: " + JSON.stringify(payload));
+        //console.log("Payload: " + JSON.stringify(payload));
 
         let response;
 
