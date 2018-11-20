@@ -33,12 +33,24 @@ export class Home extends React.Component {
     }
 
     // Keeping the style from lecture as it is very good structure
-    contentLoggedIn(userId) {
+    contentLoggedIn(userId, loggedIn) {
         return (
             <div className="Message">
                 <h3 className="loggedInMessage">Welcome {userId}</h3>
+                <div>
+                {loggedIn ? (
+                    <Link to={'/quizboard'}>
+                        Play the game
+                    </Link>
+                ) : (
+                    <div>
+                        Login to play the game
+                    </div>
+                )}
+                </div>
+
                 <p>
-                    <button onClick={this.userLogout}>Logout</button>
+                <button onClick={this.userLogout}>Logout</button>
                 </p>
             </div>
         );
@@ -60,8 +72,16 @@ export class Home extends React.Component {
        return (
         <div className="Message">
             <div className="notLoggedInMessage">Log in or create user to continue</div>
-            <Link to={"/login"}>Login</Link>
-            <Link to={"/signup"}>Register</Link>
+            <Link to={"/login"}>
+                <button type="button">
+                    Login page
+                </button>
+            </Link>
+            <Link to={"/signup"}>
+                <button type="button">
+                    Register
+                </button>
+            </Link>
         </div>
     )
     }
@@ -77,7 +97,7 @@ export class Home extends React.Component {
         if (userId === null || userId === undefined) {
             content = this.contentNotLoggedIn();
         } else {
-            content = this.contentLoggedIn(userId);
+            content = this.contentLoggedIn(userId, loggedIn);
         }
 
         // set up ternary operator or if else, If logged in show welcome to the user, if not logged in then ask them to go to sign up

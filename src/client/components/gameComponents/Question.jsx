@@ -3,11 +3,11 @@ import React from 'react';
 class Question extends React.Component {
 
     // handle the selection of item
-    handleChange(e) {
+    handleClick(e) {
         const {setCurrent, setScore, question} = this.props;
         e.preventDefault(); // Prevent the default behavior of submitting the form over HTTP
         const selected = e.target.value;
-        setCurrent(this.props.current + 1);
+        setCurrent(this.props.current + 1); // Move on to the next QuestionItem ( in array )
 
         // If the selected option is right, add points to the current score or else do nothing else
         if(selected === question.correct) {
@@ -26,13 +26,13 @@ class Question extends React.Component {
                         question.choices.map(choice => {
                             return (
                                 <li className="list-group-item" key={choice.id}> 
-                                    <input 
-                                        onChange={this.handleChange.bind(this)} 
-                                        type="radio" 
-                                        name={question.id}
-                                        value={choice.id}
-                                    />
-                                    {choice.id} - {choice.text}
+                                        <button 
+                                            onClick={this.handleClick.bind(this)} 
+                                            name={question.id}
+                                            value={choice.id}
+                                        >
+                                        {choice.id} - {choice.text}
+                                </button>
                                 </li>
                             );
                         })

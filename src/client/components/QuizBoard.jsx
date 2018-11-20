@@ -1,5 +1,4 @@
 import React from 'react';
-import StatusQuestions from './gameComponents/StatusQuestions';
 import QuestionsList from './gameComponents/QuestionList';
 import Results from './gameComponents/Results';
 
@@ -23,6 +22,10 @@ class QuizBoard extends React.Component {
                         {
                             id: 'c',
                             text: 'A programming lanugage'
+                        },
+                        {
+                            id: 'd',
+                            text: 'A programming lanugage'
                         }
                     ],
                     correct: 'a'
@@ -41,6 +44,10 @@ class QuizBoard extends React.Component {
                         },
                         {
                             id: 'c',
+                            text: 'A programming lanugage'
+                        },
+                        {
+                            id: 'd',
                             text: 'A programming lanugage'
                         }
                     ],
@@ -61,6 +68,10 @@ class QuizBoard extends React.Component {
                         {
                             id: 'c',
                             text: 'Trick'
+                        },
+                        {
+                            id: 'd',
+                            text: 'A programming lanugage'
                         }
                     ],
                     correct: 'a'
@@ -88,9 +99,14 @@ class QuizBoard extends React.Component {
 
         if (this.state.current > this.state.questions.length) {
             statusQuestions = '';
+            // Own file since it will send the request to the reducer too.
             results = <Results {...this.state}/>
         } else {
-            statusQuestions = <StatusQuestions {...this.state}/>
+            // Since the status is so little code, felt like it didn't warant it's own file like Results
+            statusQuestions = 
+                <div>
+                    Question {this.state.current} out of {this.state.questions.length}
+                </div>
             results = '';
         }
 
