@@ -20,15 +20,15 @@ export class ListOfQuestions extends React.Component {
 
         this.socket = socketIOClient(window.location.origin); // bind it to the window (like localhost:8080) etc
 
+        /* For debugging
         console.log(this.socket);
         console.log(this.socket.id);
         console.log(window.location.origin); // should be http://localhost:8080 
-
+        */
     };
 
     componentDidMount() {
         this.fetchQuestions();
-        // At beginning of this component, run the fetch method
     }
 
     // Fetch method for questions from api (server)

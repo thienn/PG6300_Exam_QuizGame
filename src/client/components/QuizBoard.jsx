@@ -2,7 +2,7 @@ import React from 'react';
 import socketIOClient from 'socket.io-client';
 
 import QuestionsList from './gameComponents/QuestionList';
-import Results from './gameComponents/Results';
+import EndPage from './gameComponents/EndPage';
 
 class QuizBoard extends React.Component {
     constructor(props) {
@@ -81,14 +81,13 @@ class QuizBoard extends React.Component {
 
     render() {
         let statusQuestions;
-        let results;
+        let endPage;
         
         // If the currentQuestion is smaller than the length of available questions in the state. Continue
-        // Else show the results page (End page of game)
+        // Else show the End page of game
         if (this.state.currentQuestion > this.state.questions.length) {
-            statusQuestions = '';
             // Own file since it will send the request to the reducer too.
-            results = <Results {...this.state}/>
+            endPage = <EndPage {...this.state}/>
 
         } else {
             // Since the status is so little code, felt like it didn't warrant it's own file like Results
@@ -96,7 +95,6 @@ class QuizBoard extends React.Component {
                 <div>
                     Question {this.state.currentQuestion} out of {this.state.questions.length}
                 </div>
-            results = '';
         }
 
         return (
@@ -108,7 +106,7 @@ class QuizBoard extends React.Component {
                     setCurrentQuestion={this.setCurrentQuestion.bind(this)}
                     {...this.state}    
                 />
-                {results}
+                {endPage}
             </div>
         )
     }

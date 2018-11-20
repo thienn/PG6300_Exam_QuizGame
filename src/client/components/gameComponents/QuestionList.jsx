@@ -1,5 +1,5 @@
 import React from 'react';
-import Question from './Question.jsx';
+import QuestionItem from './QuestionItem.jsx';
 
 class QuestionList extends React.Component {
     // Loop through the questions in the state. Map to create a array of each question with help of Question.jsx
@@ -9,13 +9,19 @@ class QuestionList extends React.Component {
                 {   
                     this.props.questions.map(questionItem => {
                         if (this.props.currentQuestion === questionItem.id) {
-                            return <Question questionItem={questionItem} key={questionItem.id} {...this.props}/>
+                            return (
+                            <QuestionItem 
+                                questionItem={questionItem} 
+                                key={questionItem.id} 
+                                {...this.props}
+                            />
+                            )
                         }
                     })
                 }
             </div>
         )
-    }
-}
+    };
+};
 
 export default QuestionList;
