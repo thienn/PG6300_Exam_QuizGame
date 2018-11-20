@@ -35,7 +35,7 @@ class Results extends React.Component {
         return (
             <div>
                 <h4>You got {this.props.score} out of {this.props.questions.length}</h4>
-                <h1>Your score is {this.state.score} points</h1>
+                <h1>Your total is {this.state.score} points</h1>
 
                 <Link to={'/highscore'}>
                     <button type="button" className="buttonUI">

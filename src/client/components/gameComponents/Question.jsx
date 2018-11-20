@@ -4,34 +4,33 @@ class Question extends React.Component {
 
     // handle the selection of item
     handleClick(e) {
-        const {setCurrent, setScore, question} = this.props;
+        const {setCurrentQuestion, setScore, questionItem} = this.props;
         e.preventDefault(); // Prevent the default behavior of submitting the form over HTTP
-        const selected = e.target.value;
-        setCurrent(this.props.current + 1); // Move on to the next QuestionItem ( in array )
+        const chosenAnswer = e.target.value;
+        setCurrentQuestion(this.props.currentQuestion + 1); // Move on to the next QuestionItem ( in array ) - Works for now since it is static
 
         // If the selected option is right, add points to the current score or else do nothing else
-        if(selected === question.correct) {
+        if(chosenAnswer === questionItem.correctAnswer) {
             setScore(this.props.score + 1);
         }
     }
 
     render() {
-        const { question } = this.props;
+        const { questionItem } = this.props; // Get the question out of the state of parent
         return (
             <div>
-                <h3>{question.text}</h3>
-                <hr />
                 <ul className="list-group">
+                <h3>{questionItem.text}</h3>
+                <ul>
                     {
-                        question.choices.map(choice => {
+                        questionItem.answers.map(answer => {
                             return (
-                                <li className="list-group-item" key={choice.id}> 
-                                        <button className="buttonChoice"
+                                <li className="answer-item" key={answer.id}> 
+                                        <button className="buttonAnswer"
                                             onClick={this.handleClick.bind(this)} 
-                                            name={question.id}
-                                            value={choice.id}
+                                            value={answer.id}
                                         >
-                                        {choice.id} - {choice.text}
+                                        {answer.id} - {answer.text}
                                 </button>
                                 </li>
                             );

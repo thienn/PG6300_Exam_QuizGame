@@ -51,9 +51,9 @@ export class Home extends React.Component {
                 )}
                 </div>
 
-                <p>
+                <div>
                 <button className="buttonUI" onClick={this.userLogout}>Logout</button>
-                </p>
+                </div>
             </div>
         );
     };
@@ -105,9 +105,7 @@ export class Home extends React.Component {
         // set up ternary operator or if else, If logged in show welcome to the user, if not logged in then ask them to go to sign up
         return (
             <div>
-                <p>
-                 {content}
-                </p>
+                {content}
             </div>
         )
     }

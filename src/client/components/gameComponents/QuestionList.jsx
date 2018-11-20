@@ -6,9 +6,9 @@ class QuestionList extends React.Component {
         return (
             <div>
                 {
-                    this.props.questions.map(question => {
-                        if (this.props.current === question.id) {
-                            return <Question question={question} key={question.id} {...this.props}/>
+                    this.props.questions.map(questionItem => {
+                        if (this.props.currentQuestion === questionItem.id) {
+                            return <Question questionItem={questionItem} key={questionItem.id} {...this.props}/>
                         }
                     })
                 }

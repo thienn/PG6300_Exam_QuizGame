@@ -2,7 +2,7 @@ const questions = [
     {
         id: 1,
         text: 'What is ReactJS',
-        choices: [
+        answers: [
             {
                 id: 'a',
                 text: 'A javascript library'
@@ -20,12 +20,12 @@ const questions = [
                 text: 'No idea'
             }
         ],
-        correct: 'a'
+        correctAnswer: 'a'
     },
     {
         id: 2,
         text: 'What is Express',
-        choices: [
+        answers: [
             {
                 id: 'a',
                 text: 'A train'
@@ -43,12 +43,12 @@ const questions = [
                 text: 'Transfer method'
             }
         ],
-        correct: 'b'
+        correctAnswer: 'b'
     },
     {
         id: 3,
         text: 'What is typescript',
-        choices: [
+        answers: [
             {
                 id: 'a',
                 text: 'A superset of JavaScript'
@@ -66,12 +66,12 @@ const questions = [
                 text: 'A programming lanugage'
             }
         ],
-        correct: 'a'
+        correctAnswer: 'a'
     },
     {
         id: 4,
         text: 'What is the name of this course',
-        choices: [
+        answers: [
             {
                 id: 'a',
                 text: 'React 101'
@@ -89,12 +89,12 @@ const questions = [
                 text: 'Web Development and API design'
             }
         ],
-        correct: 'd'
+        correctAnswer: 'd'
     },
     {
         id: 5,
         text: 'What is NodeJS based on',
-        choices: [
+        answers: [
             {
                 id: 'a',
                 text: 'Java'
@@ -112,7 +112,7 @@ const questions = [
                 text: 'Kotlin'
             }
         ],
-        correct: 'c'
+        correctAnswer: 'c'
     },
 
 ]
