@@ -7,7 +7,7 @@ class Question extends React.Component {
         const {setCurrentQuestion, setScore, questionItem} = this.props;
         e.preventDefault(); // Prevent the default behavior of submitting the form over HTTP
         const chosenAnswer = e.target.value;
-        setCurrentQuestion(this.props.currentQuestion + 1); // Move on to the next QuestionItem ( in array ) - Works for now since it is static
+        setCurrentQuestion(this.props.currentQuestion + 1); // Move on to the next QuestionItem ( in array ) - Works for now since it is static id
 
         // If the selected option is right, add points to the current score or else do nothing else
         if(chosenAnswer === questionItem.correctAnswer) {

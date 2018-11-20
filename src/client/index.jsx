@@ -10,14 +10,12 @@ import { addScore } from './actions/highscoreActions';
 
 const store = configureStore();
 
-// Dummy data to test out the reducers 
+// Dummy data to test out the reducers and show something in HighScore
 store.dispatch(addScore( { name: 'Katherine', score: 10 }))
 store.dispatch(addScore( { name: 'Katherine', score: 20 }))
 store.dispatch(addScore( { name: 'Abraham', score: 20 }))
 store.dispatch(addScore( { name: 'Abraham', score: 30 }))
 store.dispatch(addScore( { name: 'Peter', score: 40 }))
-
-// console.log(store.getState());
 
 const jsx = (
     <Provider store={store}>

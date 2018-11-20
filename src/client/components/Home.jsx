@@ -1,6 +1,12 @@
+/*    
+    Structure related to login / register adapted from lectures - https://github.com/arcuri82/pg6300
+    Modified and adapted some parts of it to my use. Including renaming & updating different parts.
+    Like ES6 for string messages + buttons instead of links
+*/
+
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Login from '../components/login';
 
 export class Home extends React.Component {
     constructor(props) {
@@ -58,19 +64,9 @@ export class Home extends React.Component {
         );
     };
 
-    // Login form, or send to signup
+    // Send to login or register 
+    // TODO: Add the login form itself into the Home via component
     contentNotLoggedIn() {
-
-        /*
-       // console.log("Logged in not: " + this.updateLoggedInUserId(this));
-       log = this.props.updateLoggedInUserId();
-        return (
-            <div className="Message">
-                <div className="notLoggedInMessage">Log in or create user to continue</div>
-                <Login updateLoggedInUserId={log}/>
-            </div>
-        )
-        */
        return (
         <div className="Message">
             <h2 className="notLoggedInMessage">Log in or create user to continue</h2>
@@ -85,9 +81,8 @@ export class Home extends React.Component {
                 </button>
             </Link>
         </div>
-    )
+        )
     }
-
 
     render() {
         const userId = this.props.userId;

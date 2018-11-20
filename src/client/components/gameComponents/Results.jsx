@@ -16,7 +16,7 @@ class Results extends React.Component {
     componentWillUnmount() {
         console.log(this.props.questions.length)
         // Checks if the length of questions is longer than 0, as Results component get mounted at start, during QuizBoard
-        // before player get to interact and start as 0. Then will call on the method before it dismount (go away from the component in any way) 
+        // before player get to interact it start as 0. Then will call on the method before it dismount (go away from the component in any way) 
         if(this.props.questions.length > 0 ) {
             this.setResults();
         }
@@ -24,9 +24,8 @@ class Results extends React.Component {
     
     
     setResults() {  
-        console.log("setResults was called");
-        //console.log(this.state.score + "from setResults");
-        // console.log(this.props.player + " From results");
+        //console.log("setResults was called");
+
         // Since player isn't manipulated in this component, using it directly from props
         this.props.dispatch(addScore({ name: this.props.player, score: this.state.score }));
     }

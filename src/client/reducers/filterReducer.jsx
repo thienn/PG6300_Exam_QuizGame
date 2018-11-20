@@ -3,6 +3,7 @@ const filterReducerDefault = {
     sortBy: 'score'
 };
 
+// Currently not in use
 export default (state = filterReducerDefault, action) => {
     switch(action.type) {
         case 'FILTER_NAME':

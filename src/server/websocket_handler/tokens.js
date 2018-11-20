@@ -1,4 +1,3 @@
-// Setup from lecture for websocket / tokens to handle sessions
 /*
 Base setup for web sockets and sessions is from the lecture 8 + 11. 
 In relation to web sockets and tokens for session handling. 

@@ -1,5 +1,6 @@
 /*
     Setup of structure taken from - https://github.com/arcuri82/pg6300/
+    with some simple modifications for clarity of variables and comments
 */
 
 const express = require('express')
@@ -12,14 +13,13 @@ const router = express.Router();
 
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-
     res.status(204).send();
 });
 
 
 router.post('/signup', function(req, res){
 
-    console.log("before creating" + req.body.userId);
+    //console.log(`before creating  ${req.body.userId}`);
     const created = Users.createUser(req.body.userId);
 
     if(! created){
@@ -28,13 +28,13 @@ router.post('/signup', function(req, res){
     }
 
     passport.authenticate('local')(req, res, () => {
-        console.log(req.body);
+        // console.log(req.body);
         req.session.save((err) => {
             if (err) {
                 return next(err);
             }
-            console.log('right place - authApi')
-            console.log(Users.getUser(req.body.userId));
+            //console.log('User creation - authApi')
+            console.log(`User was created: ${req.body.userId}`);
             res.status(204).send();
         });
     });
@@ -42,7 +42,6 @@ router.post('/signup', function(req, res){
 
 
 router.post('/logout', function(req, res){
-
     req.logout();
     res.status(204).send();
 });
@@ -53,7 +52,6 @@ router.post('/logout', function(req, res){
     logged in user, which is defined by the provided session cookie.
  */
 router.post('/wstoken', function (req, res) {
-
     if(! req.user){
         console.log('wsToken - 401');
         res.status(401).send();
@@ -71,9 +69,9 @@ router.post('/wstoken', function (req, res) {
  */
 router.get('/user', function (req, res) {
     //console.log(req.user.id);
-    console.log(req.user);
+    //console.log(req.user);
     if(! req.user){
-        console.log('/user - 401');
+        //console.log('/user - 401');
         res.status(401).send();
         return;
     }

@@ -1,6 +1,6 @@
 /*
     Structure adapted from lectures - https://github.com/arcuri82/pg6300
-    Modified so the user don't need password at all.
+    Modified so the user don't need password at all + buttons.
 */
 
 
@@ -48,10 +48,9 @@ class SignUp extends React.Component {
                 },
                 body: JSON.stringify(payload) // turn object into JSON string to transfer
             });
-            console.log("Successful?" + response.status);
+            //console.log("Successful" + response.status);
         } catch (err) {
             this.setState({ errorMessage: "Failed to connect ot server: " + err});
-            console.log("this!" + response);
             return;
         }
 
@@ -66,10 +65,10 @@ class SignUp extends React.Component {
         }
 
         // If none of the conditions happens go as normal
-        console.log("ALl well")
+        // console.log("No errors")
         this.setState({ errorMessage: null });
         this.props.updateLoggedInUserId(userId);
-        this.props.history.push('/'); //go back to main
+        this.props.history.push('/'); //go back to home
     }
 
     render() {

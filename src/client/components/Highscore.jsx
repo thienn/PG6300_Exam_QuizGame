@@ -11,7 +11,7 @@ const HighscorePage = (props) => (
         <h2>Highscore</h2>
         Search by user ID
         <HighscoreFilters />
-        {console.log(props.highscore)}
+
         {props.highscore.map((score) => {
             return <HighscoreItem key={score.id} {...score}/>
         })}
@@ -20,6 +20,7 @@ const HighscorePage = (props) => (
 
 const mapStateToProps = (state) => {
     //console.log('Action called from highscore')
+    
    // Connects the redux store state highscore with the redux state filters to return the array of values that have gone through the filters
    return {
        highscore: selectFilters(state.highscore, state.filters)

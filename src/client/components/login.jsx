@@ -28,7 +28,7 @@ class Login extends React.Component{
 
     async doLogIn(){
         const {userId } = this.state;
-         console.log(userId + " at start of doLogin");
+         //console.log(userId + " at start of doLogin");
 
         const url = "/api/login";
 
@@ -61,9 +61,9 @@ class Login extends React.Component{
             return;
         }
 
-        console.log("Got through the errors");
+        // console.log("Got through the errors");
         this.setState({errorMsg: null});
-        console.log(userId + "Phase: 1");
+         // console.log(userId);
         this.props.updateLoggedInUserId(userId);
         this.props.history.push('/');
     }

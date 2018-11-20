@@ -61,33 +61,35 @@ class QuizBoard extends React.Component {
         };
     }
 
-    // set current state when score updates
+    // set currentQuestion state when something got selected (Called in Question.jsx)
     setCurrentQuestion(currentQuestion) {
         this.setState({currentQuestion});
     }
 
-    // Set score
+    // Set score after every turn is done (Called in Quetion.jsx)
     setScore(score) {
         this.setState({score});
     }
 
-    // set player 
+    // Set player - data sent in 
     setPlayer() {
         this.setState({ player: this.props.userId })
-        console.log("Player set")
+        // console.log("Player set")
     }
 
     render() {
         let statusQuestions;
         let results;
         
+        // If the currentQuestion is smaller than the length of available questions in the state. Continue
+        // Else show the results page (End page of game)
         if (this.state.currentQuestion > this.state.questions.length) {
             statusQuestions = '';
             // Own file since it will send the request to the reducer too.
             results = <Results {...this.state}/>
 
         } else {
-            // Since the status is so little code, felt like it didn't warant it's own file like Results
+            // Since the status is so little code, felt like it didn't warrant it's own file like Results
             statusQuestions = 
                 <div>
                     Question {this.state.currentQuestion} out of {this.state.questions.length}

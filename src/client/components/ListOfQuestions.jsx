@@ -1,18 +1,6 @@
 /*
-import React from 'react';
-
-const GamePage = () => (
-    <div>
-        This is the GamePage - Show the questions from JSON for test
-    </div>
-);
-
-export default GamePage;
-
-*/
-
-/*
     For admin purposes or so in the future. Question ID, Text, options and the correct answer
+    Structure for sockets & reading api adapted from - https://github.com/arcuri82/pg6300/
 */
 
 import React from 'react';
@@ -38,55 +26,23 @@ export class ListOfQuestions extends React.Component {
 
     };
 
-    /* Base init socket, so it can be manually called
-    initSocket = () => {
-        const socket = socketIOClient(window.location.origin)
-        socket.on('connect, () => {
-            console.log('connected socket from client')
-        })
-        this.setState({socket})
-        // add socket: null to the state constructor
-    }
-    *7
-
-    /*
-
-    // method for emitting a socket.io event (send is just a name)
-    // send = () => {}
-    send() {
-        //const socket = scoketIOClient(this.state.endpoint);
-        const socket = socketIOClient('http://localhost:8080');
-
-        // emit an event to the socket (server) with an arguemnt of something
-        // will test with sending the color red
-        socket.emit("update", "something");
-        // can have multiple arguments socket.emit('change color, 'red, 'yellow')
-
-
-    }
-    */
-
-
-    // component mount
     componentDidMount() {
         this.fetchQuestions();
         // At beginning of this component, run the fetch method
-        // this.initSocket() // run the method at start
     }
 
-    // Fetch method for questions test
+    // Fetch method for questions from api (server)
     async fetchQuestions() {
         const url = "http://localhost:8080/api/questions";
 
         let response;
         let payload;
 
-        // try catch to run the url
         try {
             response = await fetch(url);
-            payload = await response.json(); // the payload is the JSON that you find in that link.
+            payload = await response.json(); // the payload is the JSON that you find in that url.
         } catch(err) {
-            console.log(err); // console log the error
+            console.log(err); 
             this.setState({
                 questions: null,
                 error: "Error getting the questions" + err
@@ -94,7 +50,7 @@ export class ListOfQuestions extends React.Component {
             return;
         }
 
-        // if response is successful - set the questions object in state to the paylod
+        // if response is successful - add the payload from to the questions state object
         if (response.status === 200) {
             this.setState({
                 questions: payload,
@@ -108,23 +64,10 @@ export class ListOfQuestions extends React.Component {
         };
     }
 
-    // render
     render() {
 
-        
-        // since render runs often can use it to test to see if there is any updates to the sockets
-        //const socket = socketIOClient('http://localhost:8080');
-
-        /*
-        //socket.on is a method that checks for incoming events form the server 
-        // this method looks for chane color in this case
-        // then take the callback function as first argument
-        socket.on('change color', (color) => {
-            document.body.style.backgroundColor = color // set the background color to the one the argument was given
-        });
-        */
-
-
+        // If there is any errors or questions not able to be fetched, then write out the error or no 
+        // questions at the current DB / Path. Or else show the table of items (questions) from API
         let table;
         if (this.state.error !== null ) {
             table =<p>{this.state.error}</p>

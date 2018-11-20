@@ -4,36 +4,13 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from '../components/Header';
 
 import { Home } from '../components/Home';
-import { ListOfQuestions } from '../components/ListOfQuestions';
+import QuizBoard from '../components/QuizBoard';
 import HighscorePage from '../components/Highscore';
+import { ListOfQuestions } from '../components/ListOfQuestions';
 import PageNotFoundPage from '../components/PageNotFound';
 
 import SignUp from '../components/signup';
 import Login from '../components/login';
-
-import QuizBoard from '../components/QuizBoard';
-
-// <Route path="/signup" exact component={signup} />
-// <Route path="/" exact component={Home}/>
-/*
-const AppRouter = () => (
-    <BrowserRouter>
-        <div>
-            <Header userId={this.state.userId}
-            updateLoggedInUserId={this.updateLoggedInUserId}/>
-            <Switch>
-                <Route path="/" exact component={Home}/>
-                <Route path="/game" component={Game} />
-                <Route path="/highscore" component={HighscorePage} />
-                <Route path="/signup" render={props => <signup {...props} userId={this.state.userId} updateLoggedInUserId={this.updateLoggedInUserId} /> } />
-                <Route component={PageNotFoundPage} />
-            </Switch>
-        </div>
-    </BrowserRouter>
-);
-
-export default AppRouter;
-*/
 
 export default class AppRouter extends React.Component {
     constructor(props) {
@@ -68,7 +45,7 @@ export default class AppRouter extends React.Component {
 
         if ( response.status === 401) {
             // if all goes well
-            console.log('AppRouter - 401');
+            // console.log('AppRouter - 401');
             this.updateLoggedInUserId(null);
             return;
         }
@@ -86,7 +63,9 @@ export default class AppRouter extends React.Component {
     }
 
     render() {
-        console.log(this.state.userId);
+        // console.log(this.state.userId);
+        // pass the required properties to the needed places. To check for userId & if the user is logged in
+        // If none of those pages are right, go to Not found page.
         return (
             <BrowserRouter>
             <div>

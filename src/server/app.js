@@ -4,7 +4,6 @@
 */
 
 const express = require('express');
-//const path = require('path');
 const http = require('http');
 const socketIO = require('socket.io');
 
@@ -37,35 +36,13 @@ app.use(session({
 //needed to server static files, like HTML, CSS and JS.
 app.use(express.static('public'));
 
-/*
-// socket connection - check if there is anny connected clients
-io.on('connection', socket => {
-    //console.log('User connected');
-    //console.log(`User connected - ID: ${this.socket}`);
-
-    
-    // Method that will check for the challback function (listen to the clients)
-    socket.on('change color', (color) => {
-        // Once the data is taken in on the server side, it can the be emitted (sent) to all the connected clients
-        console.log('Color changed to: ', color) // just for testing
-        // the real emit
-        io.sockets.emit('change color', color)
-
-    });
-    
-
-    // For when the user disconnect
-    socket.on('disconnect', () => {
-        console.log('User disconnected');
-    });
-}); */
-
+// Pass in the userId as both username and password for passport to bypass the need of password
 passport.use(new LocalStrategy( 
     {
         usernameField: 'userId',
         passwordField: 'userId'
     },
-    // req as it doesn't have a password
+    // a default req as it doesn't have a password argument to pass in
     function (userId, req, done) {
         const ok = Users.verifyUser(userId);
 
@@ -79,6 +56,7 @@ passport.use(new LocalStrategy(
 ));
 
 passport.serializeUser(function (user, done) {
+    console.log(`User logged in: ${user.id}`);
     done(null, user.id);
 });
 
@@ -86,6 +64,7 @@ passport.deserializeUser(function (id, done) {
     const user = Users.getUser(id);
 
     if (user !== null) {
+        console.log(`User logged out: ${user.id}`);
         done(null, user);
     } else {
         done(null, false)
@@ -100,13 +79,13 @@ app.use('/api', authApi);
 // In-memory array for simulating DB - gets the object array from another file for cleaner code
 const questions = require('./questions').questions;
 
-// In-memory array to act as "database"
+// Send the In-memory array through RESTful-API call
 app.get('/api/questions', (req, res) => {
-    //res.send([1, 2, 3]);
     res.send(questions);
 });
 
-// Get single item from the api
+/* Currently not in use for current functionality, but will keep it here for the future expanding
+// Get single object from the API
 app.get('/api/questions/:id', (req, res) => {
     // Get the specific id from the request based on the parameters given
    // res.send(req.params.id);
@@ -115,10 +94,9 @@ app.get('/api/questions/:id', (req, res) => {
    if (!question) res.status(404).send('The question was not found in the DB'); // error handler if it doesn't find the question
    res.send(question);
 });
+*/
 
-// req.query
-
-
+/* Post to the modify the questions set. Currently not implemented
 app.post('/api/questions', (req, res) => {
     const question = {
         id: questions.length + 1, // let the id be the length + 1, add at the end
@@ -127,6 +105,7 @@ app.post('/api/questions', (req, res) => {
     questions.push(question); // Push the new questionset to the array
     res.send(question); // Send info to the clients about the new object
 });
+*/
 
 module.exports = app;
 

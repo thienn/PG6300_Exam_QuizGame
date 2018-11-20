@@ -1,6 +1,6 @@
 /*
     Setup of structure taken from - https://github.com/arcuri82/pg6300/blob/master/les11/connect4-v2/src/server/ws/ws_handler.js 
-    Modified for my own use 
+    Modified for my own use + comments for me to deconstruct and use the needed parts
 */
 
 const socketIo = require('socket.io');
