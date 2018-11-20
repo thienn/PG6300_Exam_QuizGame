@@ -132,7 +132,7 @@ export class ListOfQuestions extends React.Component {
             table = <p>There is no questions in the registered database</p>
         } else {
             table = <div>
-            <table className="allQuestions">
+            <table className="tableOfQuestions">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -146,10 +146,10 @@ export class ListOfQuestions extends React.Component {
                         <tr key={question.id} className="oneQuestion">
                             <td>{question.id}</td>
                             <td>{question.text}</td> 
-                            <td>{question.choices.map(choice => 
-                                    <p key={choice.id}> {choice.text}</p> 
+                            <td>{question.answers.map(answer => 
+                                    <p key={answer.id}> {answer.id} - {answer.text}</p> 
                                 )} </td>
-                            <td>{question.correct}</td>
+                            <td>{question.correctAnswer}</td>
                         </tr>
                     )}
                 </tbody>
