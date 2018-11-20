@@ -1,3 +1,8 @@
+html {
+    background-color: grey;
+}
+
+// Header router property
 .is-active {
     font-weight: bold;
 }
@@ -17,11 +22,6 @@
     border-radius: 5px;
 }
 
-.list-group-item {
-    list-style-type: none;
-    padding: 20;
-}
-
 .buttonChoice {
     width: 200px;
     height: 50px;
@@ -38,24 +38,11 @@
     height: 30px;
 }
 
-html {
-    background-color: grey;
-}
-
-ul {
-    display: flex;
-    align-items: stretch; /* Default */
-    justify-content: space-between;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-li {
-    display: block;
-    flex: 0 1 auto; /* Default */
-    list-style-type: none;
-}
-
 .tableOfQuestions td {
     text-align: center;
+}
+
+.notLoggedInMessage {
+    color: darkred;
+    font-weight: bold;
 }

@@ -10,7 +10,7 @@
 
 ul {
     display: flex;
-    align-items: stretch; /* Default */
+    align-items: stretch; 
     justify-content: space-between;
     width: 100%;
     margin: 0;
@@ -18,6 +18,6 @@ ul {
 }
 li {
     display: block;
-    flex: 0 1 auto; /* Default */
+    flex: 0 1 auto; 
     list-style-type: none;
 }

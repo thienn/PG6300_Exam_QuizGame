@@ -73,7 +73,7 @@ export class Home extends React.Component {
         */
        return (
         <div className="Message">
-            <div className="notLoggedInMessage">Log in or create user to continue</div>
+            <h2 className="notLoggedInMessage">Log in or create user to continue</h2>
             <Link to={"/login"}>
                 <button type="button" className="buttonUI">
                     Login page

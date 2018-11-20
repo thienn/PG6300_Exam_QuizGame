@@ -1,15 +1,3 @@
-/*
-import React from 'react';
-
-const DashboardPage = () => (
-    <div>
-        This is the DashboardPage
-    </div>
-);
-
-export default DashboardPage;
-*/
-
 import React from 'react';
 
 export class DashboardPage extends React.Component {
@@ -25,7 +13,7 @@ export class DashboardPage extends React.Component {
     }
 
     componentDidMount() {
-        // check if already logged in or not
+        // call the check if logged in or not at mount
         this.checkIfAlreadyLoggedIn();
     }
 
@@ -44,8 +32,7 @@ export class DashboardPage extends React.Component {
         }
 
         if ( response.status === 401) {
-            // if all goes well
-            console.log('Dashboard - 401');
+            // console.log('Dashboard - 401');
             this.updateLoggedInUserId(null);
             return;
         }

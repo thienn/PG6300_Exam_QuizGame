@@ -1,7 +1,8 @@
 /*
-    from lecture
-    Removed anything related to password as I won't be using that
+    Structure adapted from lectures - https://github.com/arcuri82/pg6300
+    Modified so the user don't need password at all.
 */
+
 
 import React from 'react';
 import {withRouter} from 'react-router-dom';

@@ -8,7 +8,7 @@ import selectFilters from '../selectors/filterSelector';
 
 const HighscorePage = (props) => (
     <div>
-        <h1>Highscore: (Provided by Highscore.jsx)</h1>
+        <h2>Highscore</h2>
         Search by user ID
         <HighscoreFilters />
         {console.log(props.highscore)}
@@ -19,13 +19,7 @@ const HighscorePage = (props) => (
 );
 
 const mapStateToProps = (state) => {
-    console.log('Action called from highscore')
-    console.log(state)
-    /*
-    return {
-        highscore: state.highscore,
-    }
-    */
+    //console.log('Action called from highscore')
    // Connects the redux store state highscore with the redux state filters to return the array of values that have gone through the filters
    return {
        highscore: selectFilters(state.highscore, state.filters)

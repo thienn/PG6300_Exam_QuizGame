@@ -1,4 +1,8 @@
-// Will move this to dashboard 
+/*
+    Structure adapted from lectures - https://github.com/arcuri82/pg6300
+    Modified some of the contents like making them buttons instead of links
+    And only need user Id, not password which is the normal structure of passport
+*/
 
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
@@ -14,7 +18,6 @@ class Login extends React.Component{
             errorMsg: null
         };
 
-        //this.updateLoggedInUserId = this.updateLoggedInUserId.bind(this);
         this.onUserIdChange = this.onUserIdChange.bind(this);
         this.doLogIn = this.doLogIn.bind(this);
     }
@@ -69,7 +72,6 @@ class Login extends React.Component{
 
         let error = <div></div>;
         if(this.state.errorMsg !== null){
-            //TODO css
             error = <div className="errorMsg"><p>{this.state.errorMsg}</p></div>
         }
 
@@ -86,7 +88,11 @@ class Login extends React.Component{
 
                 <button className="buttonUI" onClick={this.doLogIn}>Log In</button>
                 <hr />
-                <Link to={"/signup"}>Register</Link>
+                <Link to={"/signup"}>
+                    <button className="buttonUI">
+                        Register
+                    </button>
+                </Link>
             </div>);
     }
 }
