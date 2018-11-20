@@ -19,7 +19,6 @@ class Question extends React.Component {
         const { questionItem } = this.props; // Get the question out of the state of parent
         return (
             <div>
-                <ul className="list-group">
                 <h3>{questionItem.text}</h3>
                 <ul>
                     {
