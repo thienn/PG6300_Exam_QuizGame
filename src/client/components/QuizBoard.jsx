@@ -78,8 +78,13 @@ class QuizBoard extends React.Component {
                 },
             ],
             score: 0,
-            current: 1
+            current: 1,
+            player: 'Anonymous'
         }
+    }
+
+    componentDidMount() {
+        this.setPlayer();
     }
 
     // set current state when score updates
@@ -92,15 +97,25 @@ class QuizBoard extends React.Component {
         this.setState({score});
     }
 
+    // set player 
+    setPlayer() {
+        this.setState({ player: this.props.userId })
+        console.log("Player set")
+    }
+
     render() {
         let statusQuestions;
         let results;
-
+        /*
+        user = this.state.player;
+        console.log(user);
+        */
 
         if (this.state.current > this.state.questions.length) {
             statusQuestions = '';
             // Own file since it will send the request to the reducer too.
             results = <Results {...this.state}/>
+
         } else {
             // Since the status is so little code, felt like it didn't warant it's own file like Results
             statusQuestions = 
@@ -112,6 +127,7 @@ class QuizBoard extends React.Component {
 
         return (
             <div>
+                <h3>Current player is: {this.state.player}</h3>
                 {statusQuestions}
                 <QuestionsList 
                     setScore={this.setScore.bind(this)}

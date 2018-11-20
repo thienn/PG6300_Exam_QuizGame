@@ -4,7 +4,7 @@ import Question from './Question.jsx';
 class QuestionList extends React.Component {
     render() {
         return (
-            <div className="questions">
+            <div>
                 {
                     this.props.questions.map(question => {
                         if (this.props.current === question.id) {

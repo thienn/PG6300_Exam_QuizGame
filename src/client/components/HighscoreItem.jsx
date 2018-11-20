@@ -5,7 +5,7 @@ import React from 'react';
 // TODO: When Accounts are implemented, connect another ID to the account to use
 const HighscoreItem = ( { id, name, score} ) => (
     <div>
-        <p>{name} - {score} - (ID for test) {id}}  </p>
+        <p>{name} - {score} - (ID for test - {id})   </p>
     </div>
 );
 export default HighscoreItem;

@@ -99,7 +99,7 @@ export default class AppRouter extends React.Component {
                     <Route path="/highscore" component={HighscorePage} />
                     <Route path="/signup" render={props => <SignUp {...props} userId={this.state.userId} updateLoggedInUserId={this.updateLoggedInUserId} /> } />
                     <Route path="/login" render={props => <Login {...props} userId={this.state.userId} updateLoggedInUserId={this.updateLoggedInUserId}/>}/>
-                    <Route path="/quizboard" component={QuizBoard}/>
+                    <Route path="/quizboard" render={props => <QuizBoard {...props} userId={this.state.userId} />}/>
                     <Route component={PageNotFoundPage} />
                 </Switch>
             </div>
